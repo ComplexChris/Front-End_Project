@@ -42,18 +42,20 @@ function Callback(e){
     e.preventDefault()
 }
 
+$(".submit_search_form").keypress( function(e){
+    if(e.which===13){
+        $(".submit_action").click()
+        return false;
+    }
+} )
+
 
 class Breweries{
     constructor(search=false){
-        console.log("Init")
-        const obj = {}
         this.CACHE = {}
         if( search ){
-            console.log("Running...")
             this.input_map = this.getInputs()
-            console.log(this.input_map)
             this.URL = this.getURL( this.input_map )
-            console.log(this.URL)
             this.API_Results = this.invokeGet( this.URL )
             //this.Final = this.
         }
@@ -78,7 +80,7 @@ class Breweries{
         //const apiURL = "https://cors-anywhere.herokuapp.com/http://api.openbrewerydb.org/breweries?"
         const apiURL = "https://api.openbrewerydb.org/breweries?"
         const types = ["micro", "nano", "regional", "brewpub", "large", "planning", "bar", "contract", "proprietor", "closed"]
-        const parameters = ["by_city", "by_distance", "by_postal", "page", "by_type" ]
+        const parameters = ["by_city", "by_distance", "by_postal", "page", "by_type", "by_state" ]
 
         let newURL = apiURL
         for(let key in input_map){
@@ -87,7 +89,7 @@ class Breweries{
                 newURL += `${key}=${val}&`
             }
             else{
-                console.log(`${key}=${input_map[key]} - was not valid`)
+                console.log(`${key}=${input_map[key]} - was not a valid key`)
             }
         }
         return(newURL);
@@ -97,7 +99,7 @@ class Breweries{
         $.get(URL, (data) => {this.parseGet(data)} )
     }
     parseGet(raw){
-        console.log(raw)
+        console.log("Candy? \n",  raw)
         let response = raw // JSON.parse( raw )
         if(response.length<1){
             alert("No matches found for that query. \nPlease try another search")
@@ -105,13 +107,16 @@ class Breweries{
         }
         else{
             const container = $("div.container-display")
+            container.empty()
             for(let item of response){
                 if( String(item.id).length<1){
                     continue
                 }
                 else{
-                    this.CACHE[item.id] = item
-                    this.makeEntry(item, container)
+                    setTimeout( () => {
+                        this.CACHE[item.id] = item
+                        this.makeEntry(item, container) } ,
+                    200)
                 }
             }
         }

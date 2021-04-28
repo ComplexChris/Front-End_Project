@@ -14,11 +14,11 @@
     justify-content: space-between;
     align-self: center;
     background-color: #323330;
-    height:80%;
-    width: 70%;
+    min-height: 700px;
+    height:100%;
+    width: 50%;
     padding:35px;
-    border-radius: 120px;
-    overflow: hidden;
+    border-radius: 100px;
 }
 
 .container-header{
@@ -28,7 +28,9 @@
     align-self: center;
     flex-direction: row;
     width:100%;
-    border-radius: 30px;
+    height: 20%;
+    min-height: 200px;
+    border-radius: 100px;
     background-color: floralwhite;
     border: 5px solid black;
     box-sizing:border-box;
@@ -39,9 +41,9 @@
     display:flex;
     flex-direction: column;
     align-self: center;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-top: 10%;
-    height: 70%;
+    height: 80%;
     width: 80%
 }
 
