@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Thirsty Boi</title>
+  <meta name="description" content="Brewery Lookup">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="Style.css?v=1.0" type="text/css">
+  <link rel="stylesheet" href="./validator/fv.css" type="text/css" />
+
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./validator/validator.js"></script>
+    <script src="Script.js"></script>
+
+    <div class="master">
+
+        <div class="container-root">
+
+            <div class="container-header">
+                <form onsubmit="Callback(event)" class="submit_search_form" >
+
+                    <div class="field" id="input_state">
+                        <label>
+                            <span>Enter a state</span>
+                            <input placeholder="Texas, California, Florida..." type="text" class='user_input' name="by_state">
+                        </label>
+                        <div class='tooltip help'>
+                            <span>?</span>
+                            <div class='content'>
+                                <b></b>
+                                <p>Please enter a the full state name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" id="input_city">
+                        <label>
+                            <span>Enter a city</span>
+                            <input placeholder="New York, San Diego, Austin..." type="text" class='user_input' name="by_city">
+                        </label>
+                        <div class='tooltip help'>
+                            <span>?</span>
+                            <div class='content'>
+                                <b></b>
+                                <p>Please enter a city name</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" id="input_zipcode">
+                        <label>
+                            <span>Enter a Zipcode</span>
+                            <input placeholder="Enter zip-code" data-validate-minmax="10000,99999" type="number" class='user_input' name="by_postal">
+                        </label>
+                        <div class='tooltip help'>
+                            <span>?</span>
+                            <div class='content'>
+                                <b></b>
+                                <p>Please enter a 5-digit zip code</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" id="input_type">
+						<label>
+							<span>Brewery Type</span>
+							<select name="by_type", class=user_input>
+								<option value="">Any</option>
+							</select>
+						</label>
+						<div class="tooltip help">
+							<span>?</span>
+							<div class="content">
+								<b></b>
+								<p>Choose something or choose not. what shall it be?</p>
+							</div>
+						</div>
+                        <script>
+                            const brew_types = ["micro", "nano", "regional", "brewpub", "large", "planning", "bar", "contract", "proprietor", "closed"]        
+                            for(let item of brew_types){
+                                let $option = $("<option>", {value:item, text:item } ) ;
+                                $("select.user_input").append( $option );
+                            }
+                        </script>
+					</div>
+
+                    <input type="submit" value="Submit" class="submit_action">
+                    
+                </form>
+            </div>
+
+            <div class="container-display">
+            </div>
+
+            <div class="container-footer">
+
+            </div>
+            
+        </div>
+    </div>
+
+    
+</body>
+</html>

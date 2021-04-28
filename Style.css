@@ -1,0 +1,89 @@
+.master{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height:90%;
+    width: 100%;
+    padding:35px;
+    border-radius: 300px;
+}
+
+.container-root{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    background-color: #323330;
+    height:80%;
+    width: 70%;
+    padding:35px;
+    border-radius: 120px;
+    overflow: hidden;
+}
+
+.container-header{
+    display:flex;
+    align-content:center ;
+    justify-content: space-around;
+    align-self: center;
+    flex-direction: row;
+    width:100%;
+    border-radius: 30px;
+    background-color: floralwhite;
+    border: 5px solid black;
+    box-sizing:border-box;
+    padding: 5%;
+}
+
+.container-display{
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    overflow-y: scroll;
+    margin-top: 10%;
+    height: 70%;
+    width: 80%
+}
+
+.brewery-card{
+    background-color: rgb(240, 238, 238);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.brewery-card:nth-child(2n){
+    background-color: rgb(240, 238, 238);
+}
+
+.brewery-header{
+    font-size: 20pt;
+    padding: 5px;
+    color: darkred;
+}
+.details{
+    margin: auto;
+    padding: 5px;
+    font-size: 14pt;
+}
+
+
+.submit_search_form{
+    align-self: center;
+}
+.submit_action{
+    margin-top: 10px;
+    padding: 5px;
+}
+.field{
+}
+
+button{
+    border-radius: 20px;
+    padding:35px;
+}
+
+label span{
+    color: brown;
+    font-size: 15px;
+}
+
