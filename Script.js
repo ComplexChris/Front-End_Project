@@ -7,26 +7,6 @@
 // Submit another Post request to Pantry with update object
 // {fileName:[path, apiKey, ID]}
 
-
-/*
-$(document).ready(function(){
-    $(".submit_search").click( (e) => {
-            console.log(e)
-        alert("SDFGSWRFG") })
-    })
-    \
-*/
-
-//$( "form" ).submit( ( event ) => {console.log(event) })
-/*
-$(document).ready( () => {
-    const brew_types = ["micro", "nano", "regional", "brewpub", "large", "planning", "bar", "contract", "proprietor", "closed"]        
-    for(let item of brew_types){
-        let $option = $("<option>", {value:item, text:item} ) ;
-        $("select.user_input").append( $option );
-    }
-    
-} )
 /*
 $(document).ready(function(){
     $("form").submit(function(e){
@@ -36,13 +16,25 @@ $(document).ready(function(){
     });
 }); */
 
+const __version__ = "2.3.7"
+console.log(__version__)
 
 function Callback(e){
-    const inst =  new Breweries(true)
+    console.log(e)
+    if( e.submitter.value==="Reset" ){
+        const inp_els = $(".field .user_input")
+        inp_els.each( function(index, element){
+            element.value = ""
+        })
+    }
+    else{
+        const inst = new Breweries(true)
+    }
     e.preventDefault()
 }
 
 $(".submit_search_form").keypress( function(e){
+    
     if(e.which===13){
         $(".submit_action").click()
         return false;
@@ -57,6 +49,7 @@ class Breweries{
             this.input_map = this.getInputs()
             this.URL = this.getURL( this.input_map )
             this.API_Results = this.invokeGet( this.URL )
+            console.log("URL: " + this.URL)
             //this.Final = this.
         }
     }
@@ -78,9 +71,9 @@ class Breweries{
     getURL(input_map){
         // Iterates over an object and appends key-value pairs to API URL if valid argument
         //const apiURL = "https://cors-anywhere.herokuapp.com/http://api.openbrewerydb.org/breweries?"
-        const apiURL = "https://api.openbrewerydb.org/breweries?"
+        const apiURL = "https://api.openbrewerydb.org/breweries?per_page=75&"
         const types = ["micro", "nano", "regional", "brewpub", "large", "planning", "bar", "contract", "proprietor", "closed"]
-        const parameters = ["by_city", "by_distance", "by_postal", "page", "by_type", "by_state" ]
+        const parameters = ["by_city", "by_distance", "by_postal", "page", "by_type", "by_state", "by_name"]
 
         let newURL = apiURL
         for(let key in input_map){
@@ -119,6 +112,7 @@ class Breweries{
                     200)
                 }
             }
+            $(".container-display").css("text-shadow", " inset 15px 14px 2px maroon" )
         }
     }
 

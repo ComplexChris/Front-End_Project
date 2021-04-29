@@ -16,17 +16,33 @@
     <script src="./validator/validator.js"></script>
     <script src="Script.js"></script>
 
-    <div class="master">
+    <div class="master" >
 
-        <div class="container-root">
+        <div class="container-root" >
 
-            <div class="container-header">
+            <div class="container-header" >
+                <div class="banner">Welcome to Thirsty Boi</div> <br>
+                <div class="banner greeting">Where are we drinking today? 😏  </div><br>
                 <form onsubmit="Callback(event)" class="submit_search_form" >
+
+                    <div class="field" id="by_name">
+                        <label>
+                            <span>Enter a name</span>
+                            <input placeholder="The, Green, Thirsty..." type="text" class='user_input' name="by_name" >
+                        </label>
+                        <div class='tooltip help'>
+                            <span>?</span>
+                            <div class='content'>
+                                <b></b>
+                                <p>Enter a piece of thier title</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="field" id="input_state">
                         <label>
                             <span>Enter a state</span>
-                            <input placeholder="Texas, California, Florida..." type="text" class='user_input' name="by_state">
+                            <input placeholder="Texas, California, Florida..." type="text" class='user_input' name="by_state" pattern="[A-Za-z]*">
                         </label>
                         <div class='tooltip help'>
                             <span>?</span>
@@ -36,10 +52,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="field" id="input_city">
                         <label>
                             <span>Enter a city</span>
-                            <input placeholder="New York, San Diego, Austin..." type="text" class='user_input' name="by_city">
+                            <input placeholder="New York, San Diego, Austin..." type="text" class='user_input' name="by_city" pattern="[A-Za-z]*">
                         </label>
                         <div class='tooltip help'>
                             <span>?</span>
@@ -49,10 +66,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="field" id="input_zipcode">
                         <label>
                             <span>Enter a Zipcode</span>
-                            <input placeholder="Enter zip-code" data-validate-minmax="10000,99999" type="number" class='user_input' name="by_postal">
+                            <input placeholder="32034, 97209, 76544... " type="number" class='user_input' name="by_postal" pattern="[0-9]{5}">
                         </label>
                         <div class='tooltip help'>
                             <span>?</span>
@@ -62,6 +80,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="field" id="input_type">
 						<label>
 							<span>Brewery Type</span>
@@ -86,6 +105,7 @@
 					</div>
 
                     <input type="submit" value="Submit" class="submit_action">
+                    <input type="submit" value="Reset" class="submit_action">
                     
                 </form>
             </div>
@@ -94,6 +114,15 @@
             </div>
 
             <div class="container-footer">
+
+                <footer >
+                    <ul class="list-inline-container">
+                        <li class="list-inline-item"><a href="#">Home</a></li>
+                        <li class="list-inline-item"><a href="#">About</a></li>
+                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    <p class="copyright">Chris Nguyen © 2021</p>
+                </footer>
 
             </div>
             
