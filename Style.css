@@ -86,6 +86,8 @@ label span{
 
 
 
+#mapid { height: 180px; }
+
 .brewery-card{
     background-color: rgb(240, 238, 238);
     padding: 20px;
@@ -121,6 +123,8 @@ label span{
 }
 .field{
 }
+
+
 
 
 
