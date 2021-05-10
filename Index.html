@@ -14,13 +14,13 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="./validator/validator.js"></script>
-    <script src="Script.js"></script>
+    <script defer src="Script.js"></script>
 
     <div class="master" >
 
         <div class="container-root" >
 
-            <div class="container-header" >
+            <div class="container-header" id="form_main" >
                 <div class="banner">Welcome to Thirsty Boi</div> <br>
                 <div class="banner greeting">Where are we drinking today? 😏  </div><br>
                 <form onsubmit="Callback(event)" class="submit_search_form" >
@@ -28,7 +28,7 @@
                     <div class="field" id="by_name">
                         <label>
                             <span>Enter a name</span>
-                            <input placeholder="The, Green, Thirsty..." type="text" class='user_input' name="by_name" >
+                            <input placeholder="The, Green, Thirsty..." type="text" class='user_input' name="by_name" onchange="console.log('SHIT') " >
                         </label>
                         <div class='tooltip help'>
                             <span>?</span>
@@ -70,7 +70,7 @@
                     <div class="field" id="input_zipcode">
                         <label>
                             <span>Enter a Zipcode</span>
-                            <input placeholder="32034, 97209, 76544... " type="number" class='user_input' name="by_postal" pattern="[0-9]{5}">
+                            <input placeholder="32034, 97209, 76544... " type="number" class='user_input' name="by_postal" pattern="[0-9]{5}" minlength="5" maxlength="5">
                         </label>
                         <div class='tooltip help'>
                             <span>?</span>
@@ -84,7 +84,7 @@
                     <div class="field" id="input_type">
 						<label>
 							<span>Brewery Type</span>
-							<select name="by_type", class=user_input>
+							<select name="by_type", class=user_input onchange="console.log('FFUUUCCKKK') " >
 								<option value="">Any</option>
 							</select>
 						</label>

@@ -33,11 +33,18 @@ function Callback(e){
     e.preventDefault()
 }
 
-$(".submit_search_form").keypress( function(e){
-    
-    if(e.which===13){
+//$(".field .user_input").on("submit")
+// Can also do $(submit_form)
+
+console.log("DTGHDGH")
+$(".user_input").keyup( function(e){
+    if(e.key==="enter"){
+        console.log("Button pressed")
         $(".submit_action").click()
         return false;
+    }
+    else{
+        console.log("Else")
     }
 } )
 
@@ -72,7 +79,6 @@ class Breweries{
         // Iterates over an object and appends key-value pairs to API URL if valid argument
         //const apiURL = "https://cors-anywhere.herokuapp.com/http://api.openbrewerydb.org/breweries?"
         const apiURL = "https://api.openbrewerydb.org/breweries?per_page=75&"
-        const types = ["micro", "nano", "regional", "brewpub", "large", "planning", "bar", "contract", "proprietor", "closed"]
         const parameters = ["by_city", "by_distance", "by_postal", "page", "by_type", "by_state", "by_name"]
 
         let newURL = apiURL
@@ -130,11 +136,21 @@ class Breweries{
         parent.append([
             $('<div/>', {class: "brewery-card"}).append(  [     
                 $('<div/>', {class: "brewery-header", text:template.name, id:template.id  }),       // Header for top of entry
+                $("<br>"),  
                 $('<div/>', {class: "details", text:`| Location: ${template.city}, ${template.state}, \n${template.postal_code}`}),      // Span for displaying additional content
                 $('<div/>', {class: "details", text:`|  Type: ${template.brewery_type}`} ),  
-                (template.phone==="") ? "" : $('<div/>', {class: "details", text:`|  Phone Number: ${template.phone}`} ) ,      
+                (template.phone==="") ? "" : $('<a/>', {class: "details", href:`tel:${template.phone}`, text:`|  Phone Number: ${template.phone}`, target:"_blank"} ) ,  
+                $("<br>"),  
                 (template.website_url==="") ? "" : $('<a/>', {class: "details", text:`|  Website: ${template.website_url}`, href:template.website_url, target:"_blank"} ) 
             ])  // Closer for div element
         ])  // Closer for parent object
+    }
+}
+
+class CountryDB{
+    constructor(){
+        this.URL = $.get("http://www.geonames.org/childrenJSON?geonameId=6252001&callback=listPlaces&style=long&noCacheIE=1619738789140")
+        this.STATES = this.GetCountries()
+        
     }
 }
